@@ -158,7 +158,6 @@
     <string name="charset_letters_and_digits">वर्ण और अंक</string>
     <string name="charset_most_special_characters">सबसे विशेष कैरेक्टर्स</string>
     <string name="copyright" formatted="true">%2$s के द्वारा © %1$s जो %3$s के अधीन आते हैं</string>
-    <string name="app_description">एंड्राइड के लिए हल्का और मुफ्त स्ट्रीमिंग एप्लिकेशन।</string>
     <string name="contribution_encouragement">अगर आपके पास कोई सुझाव हो जैसे कि - अनुवाद करना, डिजाईन में बदलाव करना, कोड को साफ़ रखना, या फिर कोड में जायदा बदलाव लाना हो तो - सहायता के लिए आपका स्वागत है। जितना ज्यादा होगा उतना बेहतर होगा !</string>
     <string name="delete_item_search_history">क्या आप इसको खोज इतिहास से मिटाना चाहते हैं ?</string>
     <string name="main_page_content">मुख्य पृष्ठ की विषयवस्तु</string>

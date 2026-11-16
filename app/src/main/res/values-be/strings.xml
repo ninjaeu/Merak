@@ -211,7 +211,6 @@
     <string name="copyright" formatted="true">© %1$s %2$s пад ліцэнзіяй %3$s</string>
     <string name="tab_about">Аб праграме</string>
     <string name="tab_licenses">Ліцэнзіі</string>
-    <string name="app_description">Легкавагавая праграма з адкрытым зыходным кодам для патокавага прайгравання на Android.</string>
     <string name="contribution_title">Дапамога праекту</string>
     <string name="contribution_encouragement">Вітаецца ўсё - ідэі, пераклад, змены дызайну, чыстка кода або велізарныя змены ў кодзе. Чым больш зроблена, тым лепш!</string>
     <string name="view_on_github">Старонка на GitHub</string>

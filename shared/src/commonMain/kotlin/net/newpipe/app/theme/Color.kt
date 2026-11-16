@@ -8,7 +8,8 @@ package net.newpipe.app.theme
 
 import androidx.compose.ui.graphics.Color
 
-val logoBackground = Color(0xFFCD201F)
+// Merak red (#BA1200) behind the drum logo on the About screen.
+val logoBackground = Color(0xFFBA1200)
 
 val primaryLight = Color(0xFF904A45)
 val onPrimaryLight = Color(0xFFFFFFFF)

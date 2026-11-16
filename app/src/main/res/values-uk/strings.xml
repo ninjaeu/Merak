@@ -192,7 +192,6 @@
     <string name="rename">Перейменувати</string>
     <string name="title_licenses">Ліцензії третіх сторін</string>
     <string name="tab_about">Про нас і ЧаПи</string>
-    <string name="app_description">Libre — легкий стримінг на Android.</string>
     <string name="contribution_encouragement">Незалежно від того, чи у вас є ідеї щодо перекладу, змін дизайну, очищення коду або серйозних доопрацювань — будь-яка допомога завжди вітається. Чим більше зроблено, тим кращим стає проєкт!</string>
     <string name="settings_category_debug_title">Налагодження</string>
     <string name="empty_list_subtitle">Нічого немає… чути лише цвіркунів</string>

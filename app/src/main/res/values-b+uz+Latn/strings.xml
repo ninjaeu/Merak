@@ -196,7 +196,6 @@
     <string name="view_on_github">GitHubda ko\'rish</string>
     <string name="contribution_encouragement">Sizda g\'oyalar bormi; tarjima, dizayndagi o\'zgarishlar, kodni tozalash yoki haqiqiy og\'ir kodni o\'zgartirish - yordam har doim mamnuniyat bilan qabul qilinadi. Qancha ko\'p ish qilinsa, shuncha yaxshi bo\'ladi!</string>
     <string name="contribution_title">Hissa qo\'shish</string>
-    <string name="app_description">Androidda Libre yengil streaming.</string>
     <string name="tab_licenses">Litsenziyalar</string>
     <string name="tab_about">Haqida</string>
     <string name="copyright">© %1$s tomonidan %2$s gacha %3$s</string>

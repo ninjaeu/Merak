@@ -2,4 +2,6 @@
 <resources>
     <!-- Toolbar item that opens the title search on playlist and subscription screens -->
     <item name="menu_item_title_filter" type="id" />
+    <!-- Overflow toggle that sorts the Playlists tab A to Z -->
+    <item name="menu_item_sort_alphabetical" type="id" />
 </resources>

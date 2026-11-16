@@ -1,7 +1,10 @@
+<!-- Merak: the root takes initial focus, so the search box stays closed until tapped. -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <RelativeLayout
         android:id="@+id/newPlaylist"
@@ -34,11 +37,30 @@
             tools:ignore="RtlHardcoded" />
     </RelativeLayout>
 
+    <!-- Merak: filters the playlists by name; shown whenever playlists exist. -->
+    <EditText
+        android:id="@+id/playlist_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newPlaylist"
+        android:layout_marginHorizontal="@dimen/video_item_search_padding"
+        android:layout_marginBottom="@dimen/video_item_search_padding"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="8dp"
+        android:drawableTint="?attr/colorControlNormal"
+        android:hint="@string/search_playlists"
+        android:importantForAutofill="no"
+        android:imeOptions="actionSearch|flagNoExtractUi"
+        android:inputType="text"
+        android:maxLines="1"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
     <org.schabi.newpipe.views.NewPipeTextView
         android:id="@+id/playlist_duplicate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/newPlaylist"
+        android:layout_below="@+id/playlist_search"
         android:layout_marginHorizontal="@dimen/video_item_search_padding"
         android:layout_marginBottom="@dimen/video_item_search_padding"
         android:gravity="center"

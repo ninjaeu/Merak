@@ -540,7 +540,6 @@
     <string name="drawer_open">Çəkməcəni Aç</string>
     <string name="hold_to_append">Növbələşdirmək üçün basılı tut</string>
     <string name="play_queue_remove">Sil</string>
-    <string name="app_description">Android-də pulsuz, çevik yayımlanma.</string>
     <string name="copyright">© %1$s, %2$s tərəfindən %3$s altında</string>
     <string name="settings_category_downloads_title">Yüklə</string>
     <string name="msg_popup_permission">Bu icazə, ani görüntü rejimində \naçmaq üçün lazımdır</string>

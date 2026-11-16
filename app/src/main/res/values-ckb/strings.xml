@@ -302,7 +302,6 @@
     <string name="accept">پەسەند</string>
     <string name="delete_playlist_prompt">ئەم خشتەلێدانه‌ بسڕدرێتەوە؟</string>
     <string name="mute">بێدەنگکردن</string>
-    <string name="app_description">به‌رنامه‌یه‌كی خۆڕایی و کێشکەم بۆ پەخش لەسەر ئەندرۆید.</string>
     <string name="content_not_available">بابەت به‌رده‌ست نییە</string>
     <string name="peertube_instance_url_help">ئەو دۆخانە بدۆزەرەوە کە لەگەڵ خۆتدا دەگونجێن لە %s</string>
     <string name="file">فایل</string>

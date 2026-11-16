@@ -105,7 +105,7 @@
     <string name="copyright" formatted="true">© %1$s por %2$s, bajo %3$s</string>
     <string name="tab_about">Acerca de y preguntas frecuentes</string>
     <string name="tab_licenses">Licencias</string>
-    <string name="app_description">Streaming libre y ligero en Android.</string>
+    <string name="app_description">Una aplicación Android gratuita para música y videos, con búsqueda por título en listas de reproducción y suscripciones. Merak es una aplicación no oficial derivada de NewPipe.</string>
     <string name="view_on_github">Ver en GitHub</string>
     <string name="app_license_title">Licencia de Merak</string>
     <string name="contribution_encouragement">Tanto si tiene ideas de traducción, cambios de diseño, limpieza de código o modificaciones profundas en el código, la ayuda siempre es bienvenida. ¡Cuanto más se haga, mejor se vuelve!</string>
@@ -850,4 +850,5 @@
     <string name="search_playlists">Buscar listas de reproducción</string>
     <string name="search_in_playlist">Buscar en la lista de reproducción</string>
     <string name="search_subscriptions">Buscar suscripciones</string>
+    <string name="sort_playlists_alphabetically">Ordenar de la A a la Z</string>
 </resources>

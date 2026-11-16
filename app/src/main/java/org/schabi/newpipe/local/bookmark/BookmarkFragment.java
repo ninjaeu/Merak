@@ -13,6 +13,7 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentManager;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,6 +51,7 @@ import org.schabi.newpipe.util.TitleFilterMenu;
 import org.schabi.newpipe.util.debounce.DebounceSavable;
 import org.schabi.newpipe.util.debounce.DebounceSaver;
 
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -83,6 +86,10 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
 
     private TitleFilterMenu titleFilterMenu;
 
+    /** Remembers the A to Z choice across launches; the saved drag order stays untouched. */
+    private static final String SORT_ALPHABETICAL_KEY = "merak_bookmarks_sort_alphabetical";
+    private boolean sortAlphabetical = false;
+
     ///////////////////////////////////////////////////////////////////////////
     // Fragment LifeCycle - Creation
     ///////////////////////////////////////////////////////////////////////////
@@ -92,6 +99,8 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
         super.onCreate(savedInstanceState);
         titleFilterMenu = new TitleFilterMenu(this, R.string.search_playlists,
                 titleFilterQuery, this::onTitleFilterChanged);
+        sortAlphabetical = PreferenceManager.getDefaultSharedPreferences(requireContext())
+                .getBoolean(SORT_ALPHABETICAL_KEY, false);
         if (activity == null) {
             return;
         }
@@ -135,6 +144,7 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
         super.initViews(rootView, savedInstanceState);
 
         itemListAdapter.setUseItemHandle(true);
+        applySortOrder();
         applyTitleFilter(titleFilterMenu.getFilter());
     }
 
@@ -143,6 +153,52 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
                                     @NonNull final MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         titleFilterMenu.addTo(menu);
+        menu.add(Menu.NONE, R.id.menu_item_sort_alphabetical, Menu.NONE,
+                        R.string.sort_playlists_alphabetically)
+                .setCheckable(true)
+                .setChecked(sortAlphabetical)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
+        if (item.getItemId() == R.id.menu_item_sort_alphabetical) {
+            sortAlphabetical = !sortAlphabetical;
+            item.setChecked(sortAlphabetical);
+            PreferenceManager.getDefaultSharedPreferences(requireContext()).edit()
+                    .putBoolean(SORT_ALPHABETICAL_KEY, sortAlphabetical).apply();
+            applySortOrder();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Shows the playlists A to Z by name, or in the saved order. Sorting changes only the screen,
+     * so the order the user set by dragging returns when sorting is switched off.
+     */
+    private void applySortOrder() {
+        if (itemListAdapter == null) {
+            return;
+        }
+        if (!sortAlphabetical) {
+            itemListAdapter.setDisplayComparator(null);
+            return;
+        }
+        // Collator sorts by the phone's language rules (Cyrillic included); SECONDARY strength
+        // ignores capital letters.
+        final Collator collator = Collator.getInstance();
+        collator.setStrength(Collator.SECONDARY);
+        itemListAdapter.setDisplayComparator((a, b) -> collator.compare(sortName(a), sortName(b)));
+    }
+
+    @NonNull
+    private static String sortName(final LocalItem item) {
+        if (item instanceof PlaylistLocalItem) {
+            final String name = ((PlaylistLocalItem) item).getOrderingName();
+            return name == null ? "" : name;
+        }
+        return "";
     }
 
     @Override
@@ -184,9 +240,9 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
             @Override
             public void drag(final LocalItem selectedItem,
                              final RecyclerView.ViewHolder viewHolder) {
-                // Reordering a filtered list would scramble the hidden playlists' positions.
+                // Reordering a filtered or sorted list would scramble the saved positions.
                 if (itemTouchHelper != null && itemListAdapter != null
-                        && !itemListAdapter.isFiltering()) {
+                        && !itemListAdapter.hasDisplayTransform()) {
                     itemTouchHelper.startDrag(viewHolder);
                 }
             }

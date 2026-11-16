@@ -112,6 +112,7 @@ class AndroidDownloadStorageActions(context: Context) : DownloadStorageActions {
 
     private companion object {
         const val HOST_CLASS = "org.schabi.newpipe.settings.ComposeDownloadStorage"
-        const val NEWPIPE_FOLDER = "NewPipe"
+        // Merak: matches the "Merak" download folder used by the Android settings.
+        const val NEWPIPE_FOLDER = "Merak"
     }
 }

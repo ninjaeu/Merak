@@ -293,7 +293,6 @@
     <string name="charset_letters_and_digits">ასოები და ციფრები</string>
     <string name="title_activity_about">Merak-ის შესახებ</string>
     <string name="tab_licenses">ლიცენზიები</string>
-    <string name="app_description">უფასო მსუბუქი ნაკადი Android-ზე.</string>
     <string name="contribution_title">წვლილი შეიტანეთ</string>
     <string name="contribution_encouragement">გაქვთ თუ არა იდეები; თარგმანი, დიზაინის ცვლილებები, კოდის გაწმენდა ან კოდის რეალური მძიმე ცვლილებები — დახმარება ყოველთვის მისასალმებელია. რაც მეტი კეთდება მით უკეთესი!</string>
     <string name="view_on_github">ნახვა GitHub-ზე</string>

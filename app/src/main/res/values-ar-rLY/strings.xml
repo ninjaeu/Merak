@@ -30,7 +30,6 @@
     <string name="audio_track_type_original">الافتراضي</string>
     <string name="channel_tab_videos">الفيديوهات</string>
     <string name="dismiss">إلغاء</string>
-    <string name="app_description">تطبيق مجاني خفيف البث على أندرويد.</string>
     <string name="title_activity_history">التاريخ</string>
     <string name="pause_downloads">إيقاف التحميل مؤقتًا</string>
     <string name="notification_scale_to_square_image_summary">قم بقص الصورة المصغرة للفيديو الموضحة في الإشعار من نسبة العرض إلى الارتفاع 16: 9 إلى 1: 1</string>

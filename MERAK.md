@@ -2,7 +2,7 @@
 
 > **Unofficial app.** Merak is based on [NewPipe](https://github.com/TeamNewPipe/NewPipe) and modified by ninjaeu. Merak is not affiliated with or endorsed by TeamNewPipe or NewPipe e.V., and TeamNewPipe does not build or support it. Merak is a separate app from official NewPipe releases: it installs alongside them and keeps its own data. "NewPipe" is a registered word mark of NewPipe e.V.
 
-Merak adds title search to four screens. *Merak* is a Balkan word for the joy of savoring life's simple pleasures. App version: `0.29.1-merak.2.0.1` (based on NewPipe 0.29.1).
+Merak adds title search to five places and an A–Z sort for the Playlists tab. *Merak* is a Balkan word for the joy of savoring life's simple pleasures. App version: `0.29.1-merak.2.1.0` (based on NewPipe 0.29.1).
 
 | Screen | Search matches | Toolbar label |
 |---|---|---|
@@ -10,13 +10,14 @@ Merak adds title search to four screens. *Merak* is a Balkan word for the joy of
 | Local playlist | Stream title | Search in playlist |
 | Online playlist (for example, a YouTube playlist) | Stream title | Search in playlist |
 | Subscriptions | Channel name | Search subscriptions |
+| Add to playlist (when saving a song or video) | Playlist name | Search playlists |
 
-Search ignores case and accents and accepts words in any order. Labels appear in English, Spanish, Macedonian, and Serbian.
+Search ignores case and accents and accepts words in any order. In the Playlists tab, the menu option **Sort A–Z** lists playlists alphabetically; switch it off to return to your own drag order. Labels appear in English, Spanish, Macedonian, and Serbian.
 
 ## Get the APK
 
 1. Open this repository's **Releases** section and select the newest **Merak** release.
-2. Under **Assets**, download the `.apk` file, for example `Merak-2.0.1.apk`. No GitHub sign-in is needed.
+2. Under **Assets**, download the `.apk` file, for example `Merak-2.1.0.apk`. No GitHub sign-in is needed.
 
 Every push to the `title-search` branch builds the app and publishes the release.
 
@@ -98,6 +99,14 @@ Uninstall **Merak**. Official NewPipe and its data stay untouched.
 - Merak is free software under the GNU General Public License v3.0 or later, the same license as NewPipe. The full source is in this repository.
 
 ## Changelog
+
+### 2.1.0 (2026-11-16)
+
+- **Search when adding to a playlist:** the "Add to playlist" list has a search box that filters your playlists by name.
+- **Sort A–Z:** the Playlists tab menu has a **Sort A–Z** option. Merak remembers the choice; your own drag order stays saved and returns when you switch it off. Dragging pauses while sorting is on.
+- **About screen:** now shows Merak's name, full version, drum logo in Merak red, and a description that matches the GitHub description and names NewPipe as the original. Its website, FAQ, privacy, and GitHub links lead to Merak; the donation link supports NewPipe.
+- **Fix:** in 2.0.0 and 2.0.1 the About screen, which comes from NewPipe's newer shared code, still showed NewPipe's name, logo, and wording. All of it now reads Merak, in every language, with credit to NewPipe.
+- The download folder in the newer storage settings is named Merak, matching the rest of the app.
 
 ### 2.0.1 (2026-11-14)
 

@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="navigate_back">Tagasi</string>
-    <string name="title_activity_about">Rakenduse teave: NewPipe</string>
+    <string name="title_activity_about">Rakenduse teave: Merak</string>
     <string name="title_licenses">Kolmanda osapoole litsentsid</string>
     <string name="license">Arendaja: %1$s, kasutatud litsents: %2$s</string>
     <string name="tab_about">Rakenduse teave ja KKK</string>
     <string name="tab_licenses">Litsentsid</string>
-    <string name="app_description">Vaba ja lihtne voogesitus Androidis.</string>
     <string name="contribution_title">Tee kaastööd</string>
     <string name="contribution_encouragement">Kui sul on ideid kujunduse muutmise, koodi puhastamise või suurema edasiarenduse osas - abi on alati teretulnud. Mida rohkem tehtud, seda paremaks läheb!</string>
     <string name="view_on_github">Vaata GitHubis</string>
     <string name="donation_title">Toeta meid rahaliselt</string>
-    <string name="donation_encouragement">NewPipe'i arendajad on vabatahtlikud, kes kulutavad oma vaba aega, toomaks sulle parimat kasutuskogemust. On aeg anda tagasi aidates arendajaid ja muuta NewPipe'i veel paremaks, nautides ise tassi kohvi.</string>
     <string name="give_back">Anna kogukonnale tagasi</string>
     <string name="website_title">Veebisait</string>
-    <string name="website_encouragement">Täiendava info ja uudiste lugemiseks külasta NewPipe'i veebisaiti.</string>
-    <string name="privacy_policy_title">NewPipe'i andmekaitsepõhimõtted</string>
-    <string name="privacy_policy_encouragement">NewPipe võtab privaatsust väga tõsiselt. Seetõttu ei kogu rakendus ilma nõusolekuta mingeid andmeid. \nNewPipe'i andmekaitsepõhimõtted selgitavad üksikasjalikult, milliseid andmeid saadetakse ja kogutakse veateate koostamisel.</string>
+    <string name="privacy_policy_title">Merak'i andmekaitsepõhimõtted</string>
     <string name="read_privacy_policy">Loe andmekaitsepõhimõtteid</string>
-    <string name="app_license_title">NewPipe'i litsents</string>
-    <string name="app_license">NewPipe on vaba ja avatud lähtekoodiga tarkvara. Seda võid kasutada, uurida, jagada ja parandada nii, nagu õigemaks pead. Täpsemalt - seda võid levitada ja/või muuta vastavalt Vaba Tarkvara Sihtasutuse avaldatud GNU Üldise Avaliku Litsentsi v.3 (või sinu valikul hilisema versiooni) tingimustele.</string>
+    <string name="app_license_title">Merak'i litsents</string>
+    <string name="app_license">Merak on vaba ja avatud lähtekoodiga tarkvara. Seda võid kasutada, uurida, jagada ja parandada nii, nagu õigemaks pead. Täpsemalt - seda võid levitada ja/või muuta vastavalt Vaba Tarkvara Sihtasutuse avaldatud GNU Üldise Avaliku Litsentsi v.3 (või sinu valikul hilisema versiooni) tingimustele.</string>
     <string name="read_full_license">Loe litsentsi</string>
     <string name="faq_title">Korduma kippuvad küsimused</string>
     <string name="faq_description">Kui sul tekib selle rakenduse kasutamisel probleeme, siis esmalt vaata, kas vastus leidub korduma kippuvate küsimuste hulgas!</string>

@@ -3,9 +3,12 @@ package org.schabi.newpipe.local.dialog;
 import static org.schabi.newpipe.database.playlist.model.PlaylistEntity.DEFAULT_THUMBNAIL_ID;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,9 +20,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.schabi.newpipe.NewPipeDatabase;
 import org.schabi.newpipe.R;
 import org.schabi.newpipe.database.playlist.PlaylistDuplicatesEntry;
+import org.schabi.newpipe.database.playlist.PlaylistLocalItem;
 import org.schabi.newpipe.database.stream.model.StreamEntity;
 import org.schabi.newpipe.local.LocalItemListAdapter;
 import org.schabi.newpipe.local.playlist.LocalPlaylistManager;
+import org.schabi.newpipe.util.TitleFilter;
 
 import java.util.List;
 
@@ -32,6 +37,7 @@ public final class PlaylistAppendDialog extends PlaylistDialog {
     private RecyclerView playlistRecyclerView;
     private LocalItemListAdapter playlistAdapter;
     private TextView playlistDuplicateIndicator;
+    private EditText playlistSearch;
 
     private final CompositeDisposable playlistDisposables = new CompositeDisposable();
 
@@ -79,6 +85,26 @@ public final class PlaylistAppendDialog extends PlaylistDialog {
 
         playlistDuplicateIndicator = view.findViewById(R.id.playlist_duplicate);
 
+        playlistSearch = view.findViewById(R.id.playlist_search);
+        playlistSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(final CharSequence text, final int start,
+                                          final int count, final int after) {
+                // Only the final text matters.
+            }
+
+            @Override
+            public void onTextChanged(final CharSequence text, final int start,
+                                      final int before, final int count) {
+                // Only the final text matters.
+            }
+
+            @Override
+            public void afterTextChanged(final Editable text) {
+                applyPlaylistSearch(text.toString());
+            }
+        });
+
         final View newPlaylistButton = view.findViewById(R.id.newPlaylist);
         newPlaylistButton.setOnClickListener(ignored -> openCreatePlaylistDialog());
 
@@ -103,6 +129,7 @@ public final class PlaylistAppendDialog extends PlaylistDialog {
         playlistDisposables.clear();
         playlistRecyclerView = null;
         playlistAdapter = null;
+        playlistSearch = null;
     }
 
     /*//////////////////////////////////////////////////////////////////////////
@@ -132,9 +159,28 @@ public final class PlaylistAppendDialog extends PlaylistDialog {
             playlistAdapter.clearStreamItemList();
             playlistAdapter.addItems(playlists);
             playlistRecyclerView.setVisibility(View.VISIBLE);
+            if (playlistSearch != null) {
+                // Merak: search the playlists by name whenever any exist.
+                playlistSearch.setVisibility(View.VISIBLE);
+            }
             playlistDuplicateIndicator.setVisibility(
                     anyPlaylistContainsDuplicates(playlists) ? View.VISIBLE : View.GONE);
         }
+    }
+
+    /**
+     * Shows only the playlists whose name matches the query; an empty query shows all.
+     *
+     * @param query the text typed into the search box
+     */
+    private void applyPlaylistSearch(@NonNull final String query) {
+        if (playlistAdapter == null) {
+            return;
+        }
+        final TitleFilter filter = TitleFilter.of(query);
+        playlistAdapter.setDisplayFilter(filter == null ? null : item ->
+                item instanceof PlaylistLocalItem
+                        && filter.matches(((PlaylistLocalItem) item).getOrderingName()));
     }
 
     private boolean anyPlaylistContainsDuplicates(final List<PlaylistDuplicatesEntry> playlists) {

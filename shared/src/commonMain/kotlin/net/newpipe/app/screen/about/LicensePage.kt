@@ -106,9 +106,10 @@ fun LicensePageContent(
                         .fillMaxWidth()
                         .wrapContentWidth(Alignment.End),
                     onClick = {
+                        // Merak: this entry describes the app's own license (GPL v3).
                         licenseToShow = License(
-                            name = "NewPipe",
-                            website = "https://newpipe.net/",
+                            name = "Merak",
+                            website = "https://github.com/ninjaeu/Merak",
                             spdxID = "GPL-3.0-or-later"
                         )
                         shouldShowLicenseDialog = true

@@ -124,7 +124,6 @@
     <string name="copyright" formatted="true">© %1$s av %2$s lisensiert %3$s</string>
     <string name="tab_about">Om og ofte stilte spørsmål</string>
     <string name="tab_licenses">Lisenser</string>
-    <string name="app_description">Fri lettvektsstrømming på Android.</string>
     <string name="resume_on_audio_focus_gain_title">Gjenoppta avspilling</string>
     <string name="resume_on_audio_focus_gain_summary">Fortsett avspilling etter avbrytelser (for eksempel telefonanrop)</string>
     <string name="settings_category_player_title">Avspiller</string>

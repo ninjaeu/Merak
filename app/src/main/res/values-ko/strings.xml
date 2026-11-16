@@ -147,7 +147,6 @@
     <string name="copyright" formatted="true">© %3$s 하에서 %2$s 에 의한 %1$s</string>
     <string name="tab_about">정보 및 FAQ</string>
     <string name="tab_licenses">라이선스</string>
-    <string name="app_description">가볍고 빠른 자유 안드로이드 스트리밍 앱입니다.</string>
     <string name="contribution_title">기여</string>
     <string name="contribution_encouragement">번역, 디자인, 코딩 등 다양한 기여를 언제나 환영합니다. 더 나아지도록 도와주세요!</string>
     <string name="view_on_github">GitHub에서 보기</string>

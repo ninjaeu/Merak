@@ -191,7 +191,7 @@
     <string name="copyright" formatted="true">© %1$s од %2$s под %3$s</string>
     <string name="tab_about">За апликацијата и често поставувани прашања</string>
     <string name="tab_licenses">Лиценци</string>
-    <string name="app_description">Слободна, лесна YouTube апликација за Андроид.</string>
+    <string name="app_description">Бесплатна Android апликација за музика и видеа, со пребарување по наслов во плејлисти и членства. Merak е неофицијална апликација изведена од NewPipe.</string>
     <string name="contribution_title">Допринеси</string>
     <string name="contribution_encouragement">Ако имаш идеи за; превод, дизајн, чистење или големи промени во кодот - помошта е секогаш добредојдена. Што повеќе се работи, подобра е апликацијата!</string>
     <string name="view_on_github">Види на GitHub</string>
@@ -706,4 +706,5 @@
     <string name="search_in_playlist">Пребарај во плејлистата</string>
     <string name="search_subscriptions">Пребарај членства</string>
     <string name="kao_dialog_warning">Google сега бара верификација на развивачот за апликации инсталирани надвор од Play Store на сертифицирани Android уреди. Почна во Бразил, Индонезија, Сингапур и Тајланд на 30 септември 2026, а Google планира да ја прошири низ целиот свет во 2027. Merak се инсталира надвор од Play Store, па на засегнатите уреди инсталирањето или ажурирањето може да бара „напредни“ чекори за инсталација на Google, вклучително и чекање од 24 часа.</string>
+    <string name="sort_playlists_alphabetically">Подреди азбучно</string>
 </resources>

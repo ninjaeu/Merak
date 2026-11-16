@@ -113,7 +113,7 @@
     <string name="title_activity_about">О Merak</string>
     <string name="tab_about">О нама и ЧПП</string>
     <string name="tab_licenses">Лиценце</string>
-    <string name="app_description">Слободно и лагано токовање на Android-у.</string>
+    <string name="app_description">Бесплатна Android апликација за музику и видео, са претрагом по наслову у плејлистама и праћењима. Merak је незванична апликација изведена из NewPipe-а.</string>
     <string name="view_on_github">Погледај на GitHub-у</string>
     <string name="read_full_license">Прочитај лиценцу</string>
     <string name="contribution_title">Допринос</string>
@@ -841,4 +841,5 @@
     <string name="search_in_playlist">Претражи у плејлисти</string>
     <string name="search_subscriptions">Претражи праћења</string>
     <string name="kao_dialog_warning">Google сада захтева верификацију програмера за апликације инсталиране ван Play продавнице на сертификованим Android уређајима. Почела је у Бразилу, Индонезији, Сингапуру и Тајланду 30. септембра 2026, а Google планира да је прошири на цео свет 2027. Merak се инсталира ван Play продавнице, па на погођеним уређајима инсталирање или ажурирање може захтевати Google-ове „напредне“ кораке инсталације, укључујући чекање од 24 сата.</string>
+    <string name="sort_playlists_alphabetically">Сортирај азбучно</string>
 </resources>

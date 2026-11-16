@@ -336,7 +336,6 @@
     <string name="autoplay_summary">স্বয়ংক্রিয়ভাবে প্লেব্যাক শুরু করো %s — তে</string>
     <string name="start_here_on_popup">একটি পপ-আপে প্লে শুরু করো</string>
     <string name="start_here_on_background">পটভূমিতে প্লে শুরু করো</string>
-    <string name="app_description">অ্যান্ড্রয়েডে মুক্তভাবে ও সহজে প্রচার দেখার অ্যাপ।</string>
     <string name="export_data_summary">ইতিহাস, সদস্যতা, চালুতালিকা এবং পছন্দসমূহ রপ্তানি করুন</string>
     <string name="show_hold_to_append_title">\"সংযোজন করতে ধরে রাখো\" পরামর্শ দেখাও</string>
     <string name="feed_use_dedicated_fetch_method_title">উপলব্ধ হলে আলাদা ফিড থেকে এনো</string>

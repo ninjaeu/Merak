@@ -373,7 +373,7 @@
     <string name="copyright">© %1$s by %2$s under %3$s</string>
     <string name="tab_about">About \u0026 FAQ</string>
     <string name="tab_licenses">Licenses</string>
-    <string name="app_description">Libre lightweight streaming on Android.</string>
+    <string name="app_description">A free Android app for music and videos, with title search in playlists and subscriptions. Merak is an unofficial app derived from NewPipe.</string>
     <string name="contribution_title">Contribute</string>
     <string name="contribution_encouragement">Whether you have ideas of; translation, design changes, code cleaning, or real heavy code changes—help is always welcome. The more is done the better it gets!</string>
     <string name="view_on_github">View on GitHub</string>
@@ -908,4 +908,5 @@
     <string name="search_playlists">Search playlists</string>
     <string name="search_in_playlist">Search in playlist</string>
     <string name="search_subscriptions">Search subscriptions</string>
+    <string name="sort_playlists_alphabetically">Sort A–Z</string>
 </resources>

@@ -36,6 +36,8 @@ import org.schabi.newpipe.util.OnClickGesture;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -101,6 +103,13 @@ public class LocalItemListAdapter extends RecyclerView.Adapter<RecyclerView.View
      */
     @Nullable
     private Predicate<LocalItem> displayFilter = null;
+    /**
+     * Sorts the items on screen (for example A to Z) while {@link #localItems} keeps the saved
+     * order, so the user's own drag order survives.
+     */
+    @Nullable
+    private Comparator<LocalItem> displayComparator = null;
+    /** The items on screen while a filter or sort is active. */
     private final ArrayList<LocalItem> filteredItems = new ArrayList<>();
 
     public LocalItemListAdapter(final Context context) {
@@ -124,7 +133,7 @@ public class LocalItemListAdapter extends RecyclerView.Adapter<RecyclerView.View
         if (data == null) {
             return;
         }
-        if (displayFilter != null) {
+        if (hasDisplayTransform()) {
             localItems.addAll(data);
             refilter();
             notifyDataSetChanged();
@@ -158,7 +167,7 @@ public class LocalItemListAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public void removeItem(final LocalItem data) {
-        if (displayFilter != null) {
+        if (hasDisplayTransform()) {
             localItems.remove(data);
             refilter();
             notifyDataSetChanged();
@@ -181,8 +190,8 @@ public class LocalItemListAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public boolean swapItems(final int fromAdapterPosition, final int toAdapterPosition) {
-        if (displayFilter != null) {
-            // Screen positions skip hidden items, so they cannot map to list positions.
+        if (hasDisplayTransform()) {
+            // Screen positions differ from list positions while filtered or sorted.
             return false;
         }
         final int actualFrom = adapterOffsetWithoutHeader(fromAdapterPosition);
@@ -233,6 +242,29 @@ public class LocalItemListAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     /**
+     * Sorts the items on screen. Pass {@code null} to show the saved order.
+     * Reordering stays off while a sort is set.
+     *
+     * @param comparator the screen order, or {@code null} for the saved order
+     */
+    public void setDisplayComparator(@Nullable final Comparator<LocalItem> comparator) {
+        if (comparator == null && displayComparator == null) {
+            return;
+        }
+        displayComparator = comparator;
+        refilter();
+        notifyDataSetChanged();
+    }
+
+    /**
+     * @return whether a filter or sort changes what the screen shows, which also means screen
+     * positions differ from positions in {@link #getItemsList()}
+     */
+    public boolean hasDisplayTransform() {
+        return displayFilter != null || displayComparator != null;
+    }
+
+    /**
      * @return the number of items on screen, which is smaller than
      * {@link #getItemsList()}{@code .size()} while a filter hides items
      */
@@ -241,18 +273,21 @@ public class LocalItemListAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     private List<LocalItem> displayedItems() {
-        return displayFilter == null ? localItems : filteredItems;
+        return hasDisplayTransform() ? filteredItems : localItems;
     }
 
     private void refilter() {
         filteredItems.clear();
-        if (displayFilter == null) {
+        if (!hasDisplayTransform()) {
             return;
         }
         for (final LocalItem item : localItems) {
-            if (displayFilter.test(item)) {
+            if (displayFilter == null || displayFilter.test(item)) {
                 filteredItems.add(item);
             }
+        }
+        if (displayComparator != null) {
+            Collections.sort(filteredItems, displayComparator);
         }
     }
 

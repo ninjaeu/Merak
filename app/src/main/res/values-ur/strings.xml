@@ -186,7 +186,6 @@
     <string name="copyright" formatted="true">© %1$s بذریعہ %2$s %3$s کے تحت</string>
     <string name="tab_about">کے بارے میں اور اکثر پوچھے گئے سوالات</string>
     <string name="tab_licenses">لائسنس</string>
-    <string name="app_description">اینڈروئیڈ پر لِبرے کی ہلکی اسٹریمنگ۔</string>
     <string name="contribution_title">تعاون کریں</string>
     <string name="contribution_encouragement">جو بھی آپ کے خیالات ہوں؛ ترجمہ، ڈیزائن میں تبدیلیاں، کوڈ کی درستی، یا حقیقتاً کوڈ میں بڑی تبدیلی—مدد کا ہمیشہ خیرمقدم ہے۔ جتنا زیادہ ہوگا اتنی ہی بہتری ہو گی!</string>
     <string name="view_on_github">گٹ ہب پر دیکھیں</string>

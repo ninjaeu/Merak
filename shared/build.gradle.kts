@@ -15,14 +15,15 @@ plugins {
 
 // Better than adding a third-party dependency for something as simple as this
 // https://stackoverflow.com/a/74771876/8446131
+// Merak: the shared screens (About, settings) show Merak's name and full version.
 val buildConfigGenerator by tasks.registering(Sync::class) {
     val buildConfigPackage = NEWPIPE_APPLICATION_ID_NEW
     val rawClass = """
         package $buildConfigPackage
 
         object BuildConfig {
-            const val VERSION_NAME = "$NEWPIPE_VERSION_NAME"
-            const val APP_NAME = "NewPipe"
+            const val VERSION_NAME = "$NEWPIPE_VERSION_NAME$FORK_VERSION_SUFFIX"
+            const val APP_NAME = "$FORK_APP_NAME"
         }
     """.trimIndent()
     from(resources.text.fromString(rawClass)) {

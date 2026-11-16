@@ -124,7 +124,6 @@
     <string name="copyright" formatted="true">© %1$s od %2$s pod %3$s</string>
     <string name="tab_about">Informacije i ČPP</string>
     <string name="tab_licenses">Licence</string>
-    <string name="app_description">Slobodan i jednostavan streaming na Android uređaju.</string>
     <string name="view_on_github">Pogledaj na GitHubu</string>
     <string name="app_license_title">Merakova licenca</string>
     <string name="contribution_encouragement">Ako imate ideja za prijevod, promjene u dizajnu, čišćenje koda ili neke veće promjene u kodu, pomoć je uvijek dobrodošla. Što više radimo, to bolji postajemo!</string>

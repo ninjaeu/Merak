@@ -286,7 +286,6 @@
     <string name="title_activity_recaptcha">reCAPTCHA nõue</string>
     <string name="recaptcha_request_toast">reCAPTCHA nõude taotlus</string>
     <string name="copyright" formatted="true">© %1$s %2$s %3$s alla</string>
-    <string name="app_description">Vaba ja lihtne voogesitus Androidis.</string>
     <string name="contribution_encouragement">Kui sul on ideid kujunduse muutmise, koodi puhastamise või suurema edasiarenduse osas - abi on alati teretulnud. Mida rohkem tehtud, seda paremaks läheb!</string>
     <string name="give_back">Anna kogukonnale tagasi</string>
     <string name="app_license">Merak on vaba ja avatud lähtekoodiga tarkvara. Seda võid kasutada, uurida, jagada ja parandada nii, nagu õigemaks pead. Täpsemalt - seda võid levitada ja/või muuta vastavalt Vaba Tarkvara Sihtasutuse avaldatud GNU Üldise Avaliku Litsentsi v.3 (või sinu valikul hilisema versiooni) tingimustele.</string>
