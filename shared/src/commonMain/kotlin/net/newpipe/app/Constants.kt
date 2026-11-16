@@ -7,10 +7,11 @@ package net.newpipe.app
 
 object Constants {
     // Merak: links lead to Merak's repository and guide. Donations still support NewPipe,
-    // the project Merak is derived from.
+    // the project Merak is derived from. The About page uses each URL as a list key, so
+    // every URL here must be unique; a repeated URL crashes the About screen.
     const val URL_GITHUB = "https://github.com/ninjaeu/Merak"
     const val URL_DONATION = "https://newpipe.net/donate/"
-    const val URL_WEBSITE = "https://github.com/ninjaeu/Merak"
+    const val URL_WEBSITE = "https://github.com/ninjaeu/Merak#readme"
     const val URL_PRIVACY = "https://github.com/ninjaeu/Merak/blob/title-search/MERAK.md#privacy"
     const val URL_FAQ = "https://github.com/ninjaeu/Merak/blob/title-search/MERAK.md"
 

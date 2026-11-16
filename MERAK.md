@@ -2,7 +2,7 @@
 
 > **Unofficial app.** Merak is based on [NewPipe](https://github.com/TeamNewPipe/NewPipe) and modified by ninjaeu. Merak is not affiliated with or endorsed by TeamNewPipe or NewPipe e.V., and TeamNewPipe does not build or support it. Merak is a separate app from official NewPipe releases: it installs alongside them and keeps its own data. "NewPipe" is a registered word mark of NewPipe e.V.
 
-Merak adds title search to five places and an A–Z sort for the Playlists tab and the Add to playlist list. *Merak* is a Balkan word for the joy of savoring life's simple pleasures. App version: `0.29.1-merak.2.2.0` (based on NewPipe 0.29.1).
+Merak adds title search to five places and an A–Z sort for the Playlists tab and the Add to playlist list. *Merak* is a Balkan word for the joy of savoring life's simple pleasures. App version: `0.29.1-merak.2.2.1` (based on NewPipe 0.29.1).
 
 | Screen | Search matches | Toolbar label |
 |---|---|---|
@@ -17,7 +17,7 @@ Search ignores case and accents and accepts words in any order. In the Playlists
 ## Get the APK
 
 1. Open this repository's **Releases** section and select the newest **Merak** release.
-2. Under **Assets**, download the `.apk` file, for example `Merak-2.2.0.apk`. No GitHub sign-in is needed.
+2. Under **Assets**, download the `.apk` file, for example `Merak-2.2.1.apk`. No GitHub sign-in is needed.
 
 Every push to the `title-search` branch builds the app and publishes the release.
 
@@ -99,6 +99,11 @@ Uninstall **Merak**. Official NewPipe and its data stay untouched.
 - Merak is free software under the GNU General Public License v3.0 or later, the same license as NewPipe. The full source is in this repository.
 
 ## Changelog
+
+### 2.2.1 (2026-11-16)
+
+- **Fixed:** **About & FAQ** crashed in 2.1.0 and 2.2.0 because two of its links shared one web address. The Website link now opens Merak's README.
+- Each build now checks that every About link has its own address.
 
 ### 2.2.0 (2026-11-16)
 
