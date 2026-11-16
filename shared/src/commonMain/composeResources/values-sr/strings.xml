@@ -4,4 +4,4 @@
     <string name="website_encouragement">Посетите Merak на GitHub-у за новости, упутство за инсталацију и пријаву проблема.</string>
     <string name="privacy_policy_encouragement">Merak не шаље податке свом програмеру. Извештај о грешци напушта ваш телефон само када одлучите да га пријавите, као GitHub issue који сами пишете. Обавештење о приватности апликације Merak објашњава детаље.</string>
     <string name="app_description">Бесплатна Android апликација за музику и видео, са претрагом по наслову у плејлистама и праћењима. Merak је незванична апликација изведена из NewPipe-а.</string>
-</resources>
+    </resources>
