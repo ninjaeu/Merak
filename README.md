@@ -25,7 +25,7 @@ Merak lets you stream music and videos on Android with no account and no Google 
 | Subscriptions | Channel name |
 | Add to playlist | Playlist name, when saving a song or video |
 
-Search ignores capital letters and accents and takes words in any order. The Playlists tab can also sort A–Z. Its labels appear in English, Spanish, Macedonian, and Serbian.
+Search ignores capital letters and accents and takes words in any order. The Playlists tab and the Add to playlist list can also sort A–Z. Its labels appear in English, Spanish, Macedonian, and Serbian.
 
 *Merak* is a word shared across the Balkans and Turkey for the joy of savoring life's simple pleasures: good music, good company, time well spent. The icon is an original drawing of a *tapan*, the double-headed drum heard at Balkan celebrations, in the red of [makedonskakafana.mk](https://makedonskakafana.mk).
 

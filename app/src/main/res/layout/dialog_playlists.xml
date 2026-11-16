@@ -37,30 +37,47 @@
             tools:ignore="RtlHardcoded" />
     </RelativeLayout>
 
-    <!-- Merak: filters the playlists by name; shown whenever playlists exist. -->
-    <EditText
-        android:id="@+id/playlist_search"
+    <!-- Merak: filters the playlists by name and sorts them A to Z; shown whenever
+         playlists exist. -->
+    <LinearLayout
+        android:id="@+id/playlist_search_row"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/newPlaylist"
         android:layout_marginHorizontal="@dimen/video_item_search_padding"
         android:layout_marginBottom="@dimen/video_item_search_padding"
-        android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="8dp"
-        android:drawableTint="?attr/colorControlNormal"
-        android:hint="@string/search_playlists"
-        android:importantForAutofill="no"
-        android:imeOptions="actionSearch|flagNoExtractUi"
-        android:inputType="text"
-        android:maxLines="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:visibility="gone"
-        tools:visibility="visible" />
+        tools:visibility="visible">
+
+        <EditText
+            android:id="@+id/playlist_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="8dp"
+            android:drawableTint="?attr/colorControlNormal"
+            android:hint="@string/search_playlists"
+            android:importantForAutofill="no"
+            android:imeOptions="actionSearch|flagNoExtractUi"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <CheckBox
+            android:id="@+id/playlist_sort_alphabetical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/sort_playlists_alphabetically" />
+    </LinearLayout>
 
     <org.schabi.newpipe.views.NewPipeTextView
         android:id="@+id/playlist_duplicate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/playlist_search"
+        android:layout_below="@+id/playlist_search_row"
         android:layout_marginHorizontal="@dimen/video_item_search_padding"
         android:layout_marginBottom="@dimen/video_item_search_padding"
         android:gravity="center"

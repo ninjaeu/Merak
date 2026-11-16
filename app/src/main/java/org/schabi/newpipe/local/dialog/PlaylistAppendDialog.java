@@ -8,12 +8,14 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +25,7 @@ import org.schabi.newpipe.database.playlist.PlaylistDuplicatesEntry;
 import org.schabi.newpipe.database.playlist.PlaylistLocalItem;
 import org.schabi.newpipe.database.stream.model.StreamEntity;
 import org.schabi.newpipe.local.LocalItemListAdapter;
+import org.schabi.newpipe.local.bookmark.BookmarkFragment;
 import org.schabi.newpipe.local.playlist.LocalPlaylistManager;
 import org.schabi.newpipe.util.TitleFilter;
 
@@ -37,6 +40,7 @@ public final class PlaylistAppendDialog extends PlaylistDialog {
     private RecyclerView playlistRecyclerView;
     private LocalItemListAdapter playlistAdapter;
     private TextView playlistDuplicateIndicator;
+    private View playlistSearchRow;
     private EditText playlistSearch;
 
     private final CompositeDisposable playlistDisposables = new CompositeDisposable();
@@ -85,6 +89,19 @@ public final class PlaylistAppendDialog extends PlaylistDialog {
 
         playlistDuplicateIndicator = view.findViewById(R.id.playlist_duplicate);
 
+        playlistSearchRow = view.findViewById(R.id.playlist_search_row);
+
+        // Merak: shares the Playlists tab's A to Z choice, so both lists keep one order.
+        final CheckBox sortAlphabetical = view.findViewById(R.id.playlist_sort_alphabetical);
+        sortAlphabetical.setChecked(PreferenceManager.getDefaultSharedPreferences(requireContext())
+                .getBoolean(BookmarkFragment.SORT_ALPHABETICAL_KEY, false));
+        applySortOrder(sortAlphabetical.isChecked());
+        sortAlphabetical.setOnCheckedChangeListener((button, checked) -> {
+            PreferenceManager.getDefaultSharedPreferences(requireContext()).edit()
+                    .putBoolean(BookmarkFragment.SORT_ALPHABETICAL_KEY, checked).apply();
+            applySortOrder(checked);
+        });
+
         playlistSearch = view.findViewById(R.id.playlist_search);
         playlistSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -129,6 +146,7 @@ public final class PlaylistAppendDialog extends PlaylistDialog {
         playlistDisposables.clear();
         playlistRecyclerView = null;
         playlistAdapter = null;
+        playlistSearchRow = null;
         playlistSearch = null;
     }
 
@@ -159,9 +177,9 @@ public final class PlaylistAppendDialog extends PlaylistDialog {
             playlistAdapter.clearStreamItemList();
             playlistAdapter.addItems(playlists);
             playlistRecyclerView.setVisibility(View.VISIBLE);
-            if (playlistSearch != null) {
-                // Merak: search the playlists by name whenever any exist.
-                playlistSearch.setVisibility(View.VISIBLE);
+            if (playlistSearchRow != null) {
+                // Merak: search and sort the playlists by name whenever any exist.
+                playlistSearchRow.setVisibility(View.VISIBLE);
             }
             playlistDuplicateIndicator.setVisibility(
                     anyPlaylistContainsDuplicates(playlists) ? View.VISIBLE : View.GONE);
@@ -181,6 +199,19 @@ public final class PlaylistAppendDialog extends PlaylistDialog {
         playlistAdapter.setDisplayFilter(filter == null ? null : item ->
                 item instanceof PlaylistLocalItem
                         && filter.matches(((PlaylistLocalItem) item).getOrderingName()));
+    }
+
+    /**
+     * Shows the playlists A to Z by name, or in the saved order.
+     *
+     * @param alphabetical whether to sort A to Z
+     */
+    private void applySortOrder(final boolean alphabetical) {
+        if (playlistAdapter == null) {
+            return;
+        }
+        playlistAdapter.setDisplayComparator(
+                alphabetical ? BookmarkFragment.alphabeticalOrder() : null);
     }
 
     private boolean anyPlaylistContainsDuplicates(final List<PlaylistDuplicatesEntry> playlists) {

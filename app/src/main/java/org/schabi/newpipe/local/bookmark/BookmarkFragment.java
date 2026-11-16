@@ -5,6 +5,7 @@ import static org.schabi.newpipe.local.bookmark.MergedPlaylistManager.getMergedO
 import static org.schabi.newpipe.util.ThemeHelper.shouldUseGridLayout;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.InputType;
@@ -53,6 +54,7 @@ import org.schabi.newpipe.util.debounce.DebounceSaver;
 
 import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -86,9 +88,20 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
 
     private TitleFilterMenu titleFilterMenu;
 
-    /** Remembers the A to Z choice across launches; the saved drag order stays untouched. */
-    private static final String SORT_ALPHABETICAL_KEY = "merak_bookmarks_sort_alphabetical";
+    /**
+     * Remembers the A to Z choice across launches; the saved drag order stays untouched.
+     * The "Add to playlist" dialog shares this choice.
+     */
+    public static final String SORT_ALPHABETICAL_KEY = "merak_bookmarks_sort_alphabetical";
     private boolean sortAlphabetical = false;
+    /** Follows a change made in the "Add to playlist" dialog while this screen exists. */
+    private final SharedPreferences.OnSharedPreferenceChangeListener sortListener =
+            (prefs, key) -> {
+                if (SORT_ALPHABETICAL_KEY.equals(key)) {
+                    sortAlphabetical = prefs.getBoolean(SORT_ALPHABETICAL_KEY, false);
+                    applySortOrder();
+                }
+            };
 
     ///////////////////////////////////////////////////////////////////////////
     // Fragment LifeCycle - Creation
@@ -99,8 +112,11 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
         super.onCreate(savedInstanceState);
         titleFilterMenu = new TitleFilterMenu(this, R.string.search_playlists,
                 titleFilterQuery, this::onTitleFilterChanged);
-        sortAlphabetical = PreferenceManager.getDefaultSharedPreferences(requireContext())
-                .getBoolean(SORT_ALPHABETICAL_KEY, false);
+        final SharedPreferences prefs =
+                PreferenceManager.getDefaultSharedPreferences(requireContext());
+        sortAlphabetical = prefs.getBoolean(SORT_ALPHABETICAL_KEY, false);
+        // SharedPreferences keeps listeners weakly; the field keeps this one alive.
+        prefs.registerOnSharedPreferenceChangeListener(sortListener);
         if (activity == null) {
             return;
         }
@@ -161,6 +177,16 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
     }
 
     @Override
+    public void onPrepareOptionsMenu(@NonNull final Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        // The dialog can change the choice while the menu exists.
+        final MenuItem sortItem = menu.findItem(R.id.menu_item_sort_alphabetical);
+        if (sortItem != null) {
+            sortItem.setChecked(sortAlphabetical);
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
         if (item.getItemId() == R.id.menu_item_sort_alphabetical) {
             sortAlphabetical = !sortAlphabetical;
@@ -185,11 +211,21 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
             itemListAdapter.setDisplayComparator(null);
             return;
         }
+        itemListAdapter.setDisplayComparator(alphabeticalOrder());
+    }
+
+    /**
+     * Orders playlists A to Z by name.
+     *
+     * @return a comparator by playlist name that follows the phone's language rules
+     */
+    @NonNull
+    public static Comparator<LocalItem> alphabeticalOrder() {
         // Collator sorts by the phone's language rules (Cyrillic included); SECONDARY strength
         // ignores capital letters.
         final Collator collator = Collator.getInstance();
         collator.setStrength(Collator.SECONDARY);
-        itemListAdapter.setDisplayComparator((a, b) -> collator.compare(sortName(a), sortName(b)));
+        return (a, b) -> collator.compare(sortName(a), sortName(b));
     }
 
     @NonNull
@@ -301,6 +337,8 @@ public final class BookmarkFragment extends BaseLocalListFragment<List<PlaylistL
     @Override
     public void onDestroy() {
         super.onDestroy();
+        PreferenceManager.getDefaultSharedPreferences(requireContext())
+                .unregisterOnSharedPreferenceChangeListener(sortListener);
         if (debounceSaver != null) {
             debounceSaver.getDebouncedSaveSignal().onComplete();
         }
